@@ -2,6 +2,9 @@ version: "3"
 services:
   chat:
     build: .
+    command: node_modules/.bin/nodemon index.js
+    environment:
+      NODE_ENV: development
     ports:
       - '3000:3000'
     volumes:
