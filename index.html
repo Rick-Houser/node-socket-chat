@@ -18,16 +18,18 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Return</button>
     </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io();
+      var socket = io.connect('http://192.168.99.100:3000');
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
+        console.log('message sent from client');
         $('#m').val('');
         return false;
       });
       socket.on('chat message', function(msg){
+        console.log('message 2 from client');
         $('#messages').append($('<li>').text(msg));
       });
     </script>
