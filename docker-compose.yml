@@ -1,7 +1,11 @@
-chat:
-  build: .
-  ports:
-    - '3000:3000'
-  volumes:
-    - .:/home/app/chat
-    - /home/app/chat/node_modules
+version: "3"
+services:
+  chat:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/home/app/chat
+      - node_modules:/home/app/chat/node_modules
+volumes:
+  node_modules: {}
